@@ -9,4 +9,60 @@
 
 <ion-content>
 
+  <ion-card class="cardClass">
+    <ion-slides *ngIf="publicaciones" autoplay="4000" loop="true" speed="2000" pager="true"
+      autoplayDisableOnInteraction="false">
+      <ion-slide *ngFor="let publicacion of publicaciones" (click)="irADetalle(publicacion)">
+
+        <ion-item class="encabezadoCard">
+          <ion-avatar class="avatarClass" item-start>
+            <img src="http://placeimg.com/200/200/people">
+          </ion-avatar>
+          <h2>{{publicacion.titulo}}</h2>
+          <p>{{publicacion.subtitulo}}</p>
+        </ion-item>
+
+          <img class="imgSlider" src="{{prefixURL}}{{publicacion.imagenPortada}}">
+
+
+
+
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+
+  <h4 class="titulo">Publicaciones recientes</h4>
+  <hr />
+
+  <ion-list text-wrap>
+    <button ion-item *ngFor="let publicacion of publicaciones" (click)="irADetalle(publicacion)">
+      <ion-thumbnail item-start class="avatarClass">
+        <img src="{{prefixURL}}{{publicacion.imagenPortada}}">
+      </ion-thumbnail>
+      <h2>{{publicacion.titulo}}</h2>
+      <p>{{publicacion.subtitulo}}</p>
+    </button>
+  </ion-list>
+
+
+  <ion-fab bottom right>
+    <button ion-fab color="default">
+      <ion-icon name="image"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-card class="sabiasque">
+    <ion-card-header>
+      <h3>
+        <ion-icon name="attach"></ion-icon>&nbsp;Sabias que...
+      </h3>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{sabiasque}}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+
 </ion-content>
